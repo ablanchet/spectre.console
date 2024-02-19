@@ -40,8 +40,9 @@ public sealed partial class CommandAppTests
             var app = new CommandApp();
             app.Configure(config =>
             {
-                config.PropagateExceptions();
-                config.AddCommand<GenericCommand<FlagSettingsWithOptionalOptionButNoFlagValue>>("foo");
+                config
+                    .PropagateExceptions()
+                    .AddCommand<GenericCommand<FlagSettingsWithOptionalOptionButNoFlagValue>>("foo");
             });
 
             // When
@@ -61,8 +62,9 @@ public sealed partial class CommandAppTests
             var app = new CommandAppTester();
             app.Configure(config =>
             {
-                config.PropagateExceptions();
-                config.AddCommand<GenericCommand<FlagSettings>>("foo");
+                config
+                    .PropagateExceptions()
+                    .AddCommand<GenericCommand<FlagSettings>>("foo");
             });
 
             // When
@@ -84,8 +86,9 @@ public sealed partial class CommandAppTests
             var app = new CommandAppTester();
             app.Configure(config =>
             {
-                config.PropagateExceptions();
-                config.AddCommand<GenericCommand<FlagSettings>>("foo");
+                config
+                    .PropagateExceptions()
+                    .AddCommand<GenericCommand<FlagSettings>>("foo");
             });
 
             // When
@@ -107,8 +110,9 @@ public sealed partial class CommandAppTests
             var app = new CommandAppTester();
             app.Configure(config =>
             {
-                config.PropagateExceptions();
-                config.AddCommand<GenericCommand<FlagSettingsWithDefaultValue>>("foo");
+                config
+                    .PropagateExceptions()
+                    .AddCommand<GenericCommand<FlagSettingsWithDefaultValue>>("foo");
             });
 
             // When
@@ -130,8 +134,9 @@ public sealed partial class CommandAppTests
             var app = new CommandAppTester();
             app.Configure(config =>
             {
-                config.PropagateExceptions();
-                config.AddCommand<GenericCommand<FlagSettings>>("foo");
+                config
+                    .PropagateExceptions()
+                    .AddCommand<GenericCommand<FlagSettings>>("foo");
             });
 
             // When
@@ -153,8 +158,9 @@ public sealed partial class CommandAppTests
             var app = new CommandAppTester();
             app.Configure(config =>
             {
-                config.PropagateExceptions();
-                config.AddCommand<GenericCommand<FlagSettingsWithNullableValueType>>("foo");
+                config
+                    .PropagateExceptions()
+                    .AddCommand<GenericCommand<FlagSettingsWithNullableValueType>>("foo");
             });
 
             // When

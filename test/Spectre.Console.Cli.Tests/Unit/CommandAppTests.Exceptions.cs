@@ -50,11 +50,12 @@ public sealed partial class CommandAppTests
             var app = new CommandAppTester();
             app.Configure(config =>
             {
-                config.AddCommand<ThrowingCommand>("throw");
-                config.SetExceptionHandler((_, _) =>
-                {
-                    exceptionHandled = true;
-                });
+                config
+                    .SetExceptionHandler((_, _) =>
+                    {
+                        exceptionHandled = true;
+                    })
+                    .AddCommand<ThrowingCommand>("throw");
             });
 
             // When
@@ -73,12 +74,13 @@ public sealed partial class CommandAppTests
             var app = new CommandAppTester();
             app.Configure(config =>
             {
-                config.AddCommand<ThrowingCommand>("throw");
-                config.SetExceptionHandler((_, _) =>
-                {
-                    exceptionHandled = true;
-                    return -99;
-                });
+                config
+                    .SetExceptionHandler((_, _) =>
+                    {
+                        exceptionHandled = true;
+                        return -99;
+                    })
+                    .AddCommand<ThrowingCommand>("throw");
             });
 
             // When
@@ -97,11 +99,12 @@ public sealed partial class CommandAppTests
             var app = new CommandAppTester();
             app.Configure(config =>
             {
-                config.AddCommand<ThrowingCommand>("throw");
-                config.SetExceptionHandler((_, r) =>
-                {
-                    resolver = r;
-                });
+                config
+                    .SetExceptionHandler((_, r) =>
+                    {
+                        resolver = r;
+                    })
+                    .AddCommand<ThrowingCommand>("throw");
             });
 
             // When
@@ -119,11 +122,12 @@ public sealed partial class CommandAppTests
             var app = new CommandAppTester();
             app.Configure(config =>
             {
-                config.AddCommand<DogCommand>("Лайка");
-                config.SetExceptionHandler((_, r) =>
-                {
-                    resolver = r;
-                });
+                config
+                    .SetExceptionHandler((_, r) =>
+                    {
+                        resolver = r;
+                    })
+                    .AddCommand<DogCommand>("Лайка");
             });
 
             // When

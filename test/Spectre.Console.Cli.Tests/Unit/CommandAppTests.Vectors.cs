@@ -11,8 +11,9 @@ public sealed partial class CommandAppTests
             var app = new CommandApp();
             app.Configure(config =>
             {
-                config.PropagateExceptions();
-                config.AddCommand<GenericCommand<MultipleArgumentVectorSettings>>("multi");
+                config
+                    .PropagateExceptions()
+                    .AddCommand<GenericCommand<MultipleArgumentVectorSettings>>("multi");
             });
 
             // When
@@ -32,8 +33,9 @@ public sealed partial class CommandAppTests
             var app = new CommandApp();
             app.Configure(config =>
             {
-                config.PropagateExceptions();
-                config.AddCommand<GenericCommand<MultipleArgumentVectorSpecifiedFirstSettings>>("multi");
+                config
+                    .PropagateExceptions()
+                    .AddCommand<GenericCommand<MultipleArgumentVectorSpecifiedFirstSettings>>("multi");
             });
 
             // When
@@ -53,8 +55,9 @@ public sealed partial class CommandAppTests
             var app = new CommandAppTester();
             app.Configure(config =>
             {
-                config.PropagateExceptions();
-                config.AddCommand<GenericCommand<ArgumentVectorSettings>>("multi");
+                config
+                    .PropagateExceptions()
+                    .AddCommand<GenericCommand<ArgumentVectorSettings>>("multi");
             });
 
             // When
@@ -81,8 +84,9 @@ public sealed partial class CommandAppTests
             var app = new CommandAppTester();
             app.Configure(config =>
             {
-                config.PropagateExceptions();
-                config.AddCommand<OptionVectorCommand>("cmd");
+                config
+                    .PropagateExceptions()
+                    .AddCommand<OptionVectorCommand>("cmd");
             });
 
             // When

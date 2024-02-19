@@ -11,16 +11,16 @@ public sealed partial class CommandAppTests
             var app = new CommandAppTester();
             app.Configure(config =>
             {
-                config.PropagateExceptions();
-
-                config.AddBranch<AnimalSettings>("animal", animal =>
-                {
-                    animal.SafetyOff().AddBranch("mammal", typeof(MammalSettings), mammal =>
+                config
+                    .PropagateExceptions()
+                    .AddBranch<AnimalSettings>("animal", animal =>
                     {
-                        mammal.AddCommand("dog", typeof(DogCommand));
-                        mammal.AddCommand("horse", typeof(HorseCommand));
+                        animal.SafetyOff().AddBranch("mammal", typeof(MammalSettings), mammal =>
+                        {
+                            mammal.AddCommand("dog", typeof(DogCommand));
+                            mammal.AddCommand("horse", typeof(HorseCommand));
+                        });
                     });
-                });
             });
 
             // When
@@ -48,17 +48,18 @@ public sealed partial class CommandAppTests
             var app = new CommandAppTester();
             app.Configure(config =>
             {
-                config.PropagateExceptions();
-
-                config.SafetyOff().AddBranch("animal", typeof(AnimalSettings), animal =>
-                {
-                    animal.SafetyOn<AnimalSettings>()
-                        .AddBranch<MammalSettings>("mammal", mammal =>
+                config
+                    .PropagateExceptions()
+                    .SafetyOff()
+                    .AddBranch("animal", typeof(AnimalSettings), animal =>
                     {
-                        mammal.SafetyOff().AddCommand("dog", typeof(DogCommand));
-                        mammal.AddCommand<HorseCommand>("horse");
+                        animal.SafetyOn<AnimalSettings>()
+                            .AddBranch<MammalSettings>("mammal", mammal =>
+                            {
+                                mammal.SafetyOff().AddCommand("dog", typeof(DogCommand));
+                                mammal.AddCommand<HorseCommand>("horse");
+                            });
                     });
-                });
             });
 
             // When
@@ -88,12 +89,13 @@ public sealed partial class CommandAppTests
             // When
             var result = Record.Exception(() => app.Configure(config =>
             {
-                config.PropagateExceptions();
-
-                config.SafetyOff().AddBranch("animal", typeof(AnimalSettings), animal =>
-                {
-                    animal.SafetyOn<MammalSettings>().AddCommand<DogCommand>("dog");
-                });
+                config
+                    .PropagateExceptions()
+                    .SafetyOff()
+                    .AddBranch("animal", typeof(AnimalSettings), animal =>
+                    {
+                        animal.SafetyOn<MammalSettings>().AddCommand<DogCommand>("dog");
+                    });
             }));
 
             // Then
@@ -108,16 +110,17 @@ public sealed partial class CommandAppTests
             var app = new CommandAppTester();
             app.Configure(config =>
             {
-                config.PropagateExceptions();
-
-                config.SafetyOff().AddBranch("animal", typeof(AnimalSettings), animal =>
-                {
-                    animal.AddBranch("mammal", typeof(MammalSettings), mammal =>
+                config
+                    .PropagateExceptions()
+                    .SafetyOff()
+                    .AddBranch("animal", typeof(AnimalSettings), animal =>
                     {
-                        mammal.AddCommand("dog", typeof(DogCommand));
-                        mammal.AddCommand("horse", typeof(HorseCommand));
+                        animal.AddBranch("mammal", typeof(MammalSettings), mammal =>
+                        {
+                            mammal.AddCommand("dog", typeof(DogCommand));
+                            mammal.AddCommand("horse", typeof(HorseCommand));
+                        });
                     });
-                });
             });
 
             // When
@@ -145,8 +148,7 @@ public sealed partial class CommandAppTests
             var app = new CommandAppTester();
             app.Configure(config =>
             {
-                config.PropagateExceptions();
-                config.SafetyOff().AddCommand("dog", typeof(DogCommand));
+                config.PropagateExceptions().SafetyOff().AddCommand("dog", typeof(DogCommand));
             });
 
             // When
@@ -175,8 +177,7 @@ public sealed partial class CommandAppTests
             var app = new CommandAppTester();
             app.Configure(config =>
             {
-                config.PropagateExceptions();
-                config.SafetyOff().AddBranch("animal", typeof(AnimalSettings), animal =>
+                config.PropagateExceptions().SafetyOff().AddBranch("animal", typeof(AnimalSettings), animal =>
                 {
                     animal.AddCommand("dog", typeof(DogCommand));
                     animal.AddCommand("horse", typeof(HorseCommand));
@@ -208,8 +209,7 @@ public sealed partial class CommandAppTests
             var app = new CommandAppTester();
             app.Configure(config =>
             {
-                config.PropagateExceptions();
-                config.SafetyOff().AddBranch("animal", typeof(AnimalSettings), animal =>
+                config.PropagateExceptions().SafetyOff().AddBranch("animal", typeof(AnimalSettings), animal =>
                 {
                     animal.AddCommand("dog", typeof(DogCommand));
                 });
@@ -241,8 +241,7 @@ public sealed partial class CommandAppTests
             var app = new CommandAppTester();
             app.Configure(config =>
             {
-                config.PropagateExceptions();
-                config.SafetyOff().AddCommand("multi", typeof(OptionVectorCommand));
+                config.PropagateExceptions().SafetyOff().AddCommand("multi", typeof(OptionVectorCommand));
             });
 
             // When
@@ -269,8 +268,9 @@ public sealed partial class CommandAppTests
             var app = new CommandAppTester();
             app.Configure(config =>
             {
-                config.PropagateExceptions();
-                config.AddCommand<GenericCommand<ArgumentVectorSettings>>("multi");
+                config
+                    .PropagateExceptions()
+                    .AddCommand<GenericCommand<ArgumentVectorSettings>>("multi");
             });
 
             // When

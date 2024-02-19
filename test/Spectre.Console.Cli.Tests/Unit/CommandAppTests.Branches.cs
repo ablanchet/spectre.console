@@ -11,11 +11,12 @@ public sealed partial class CommandAppTests
             var app = new CommandAppTester();
             app.Configure(config =>
             {
-                config.PropagateExceptions();
-                config.AddBranch<AnimalSettings>("animal", animal =>
-                {
-                    animal.SetDefaultCommand<CatCommand>();
-                });
+                config
+                    .PropagateExceptions()
+                    .AddBranch<AnimalSettings>("animal", animal =>
+                    {
+                        animal.SetDefaultCommand<CatCommand>();
+                    });
             });
 
             // When
@@ -36,8 +37,9 @@ public sealed partial class CommandAppTests
             var app = new CommandAppTester();
             app.Configure(config =>
             {
-                config.PropagateExceptions();
-                config.AddBranch<AnimalSettings>("animal", animal => { });
+                config
+                    .PropagateExceptions()
+                    .AddBranch<AnimalSettings>("animal", animal => { });
             });
 
             // When
@@ -65,11 +67,12 @@ public sealed partial class CommandAppTests
             var app = new CommandAppTester();
             app.Configure(config =>
             {
-                config.PropagateExceptions();
-                config.AddBranch<AnimalSettings>("animal", animal =>
-                {
-                    animal.SetDefaultCommand<CatCommand>();
-                });
+                config
+                    .PropagateExceptions()
+                    .AddBranch<AnimalSettings>("animal", animal =>
+                    {
+                        animal.SetDefaultCommand<CatCommand>();
+                    });
             });
 
             // When
@@ -99,12 +102,13 @@ public sealed partial class CommandAppTests
             var app = new CommandAppTester();
             app.Configure(config =>
             {
-                config.UseStrictParsing();
-                config.PropagateExceptions();
-                config.AddBranch<AnimalSettings>("animal", animal =>
-                {
-                    animal.SetDefaultCommand<CatCommand>();
-                });
+                config
+                    .UseStrictParsing()
+                    .PropagateExceptions()
+                    .AddBranch<AnimalSettings>("animal", animal =>
+                    {
+                        animal.SetDefaultCommand<CatCommand>();
+                    });
             });
 
             // When
@@ -133,14 +137,15 @@ public sealed partial class CommandAppTests
             var app = new CommandAppTester();
             app.Configure(config =>
             {
-                config.PropagateExceptions();
-                config.AddBranch<AnimalSettings>("animal", animal =>
-                {
-                    animal.AddBranch<MammalSettings>("mammal", mammal =>
+                config
+                    .PropagateExceptions()
+                    .AddBranch<AnimalSettings>("animal", animal =>
                     {
-                        mammal.SetDefaultCommand<CatCommand>();
+                        animal.AddBranch<MammalSettings>("mammal", mammal =>
+                        {
+                            mammal.SetDefaultCommand<CatCommand>();
+                        });
                     });
-                });
             });
 
             // When
@@ -161,14 +166,15 @@ public sealed partial class CommandAppTests
             var app = new CommandAppTester();
             app.Configure(config =>
             {
-                config.PropagateExceptions();
-                config.AddBranch<AnimalSettings>("animal", animal =>
-                {
-                    animal.AddBranch<MammalSettings>("mammal", mammal =>
+                config
+                    .PropagateExceptions()
+                    .AddBranch<AnimalSettings>("animal", animal =>
                     {
-                        mammal.SetDefaultCommand<CatCommand>();
+                        animal.AddBranch<MammalSettings>("mammal", mammal =>
+                        {
+                            mammal.SetDefaultCommand<CatCommand>();
+                        });
                     });
-                });
             });
 
             // When
@@ -193,13 +199,14 @@ public sealed partial class CommandAppTests
             var app = new CommandAppTester();
             app.Configure(config =>
             {
-                config.PropagateExceptions();
-                config.AddBranch<AnimalSettings>("animal", animal =>
-                {
-                    animal.AddCommand<DogCommand>("dog");
+                config
+                    .PropagateExceptions()
+                    .AddBranch<AnimalSettings>("animal", animal =>
+                    {
+                        animal.AddCommand<DogCommand>("dog");
 
-                    animal.SetDefaultCommand<CatCommand>();
-                });
+                        animal.SetDefaultCommand<CatCommand>();
+                    });
             });
 
             // When
@@ -220,13 +227,14 @@ public sealed partial class CommandAppTests
             var app = new CommandAppTester();
             app.Configure(config =>
             {
-                config.PropagateExceptions();
-                config.AddBranch<AnimalSettings>("animal", animal =>
-                {
-                    animal.AddCommand<DogCommand>("dog");
+                config
+                    .PropagateExceptions()
+                    .AddBranch<AnimalSettings>("animal", animal =>
+                    {
+                        animal.AddCommand<DogCommand>("dog");
 
-                    animal.SetDefaultCommand<LionCommand>();
-                });
+                        animal.SetDefaultCommand<LionCommand>();
+                    });
             });
 
             // When
@@ -253,15 +261,16 @@ public sealed partial class CommandAppTests
             var app = new CommandAppTester();
             app.Configure(config =>
             {
-                config.PropagateExceptions();
-                config.AddBranch<AnimalSettings>("animal", animal =>
-                {
-                    animal.AddBranch<MammalSettings>("mammal", mammal =>
+                config
+                    .PropagateExceptions()
+                    .AddBranch<AnimalSettings>("animal", animal =>
                     {
-                        mammal.AddCommand<DogCommand>("dog");
-                        mammal.AddCommand<CatCommand>("cat");
+                        animal.AddBranch<MammalSettings>("mammal", mammal =>
+                        {
+                            mammal.AddCommand<DogCommand>("dog");
+                            mammal.AddCommand<CatCommand>("cat");
+                        });
                     });
-                });
             });
 
             // When
@@ -289,12 +298,13 @@ public sealed partial class CommandAppTests
             var app = new CommandAppTester();
             app.Configure(config =>
             {
-                config.PropagateExceptions();
-                config.AddBranch<AnimalSettings>("animal", animal =>
-                {
-                    animal.AddCommand<DogCommand>("dog");
-                    animal.AddCommand<CatCommand>("cat");
-                });
+                config
+                    .PropagateExceptions()
+                    .AddBranch<AnimalSettings>("animal", animal =>
+                    {
+                        animal.AddCommand<DogCommand>("dog");
+                        animal.AddCommand<CatCommand>("cat");
+                    });
             });
 
             // When
@@ -322,11 +332,12 @@ public sealed partial class CommandAppTests
             var app = new CommandAppTester();
             app.Configure(config =>
             {
-                config.PropagateExceptions();
-                config.AddBranch<AnimalSettings>("animal", animal =>
-                {
-                    animal.AddCommand<DogCommand>("dog");
-                });
+                config
+                    .PropagateExceptions()
+                    .AddBranch<AnimalSettings>("animal", animal =>
+                    {
+                        animal.AddCommand<DogCommand>("dog");
+                    });
             });
 
             // When

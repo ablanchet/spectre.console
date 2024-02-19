@@ -13,8 +13,9 @@ public sealed partial class CommandAppTests
             var app = new CommandAppTester();
             app.Configure(config =>
             {
-                config.PropagateExceptions();
-                config.AddCommand<DogCommand>("dog");
+                config
+                    .PropagateExceptions()
+                    .AddCommand<DogCommand>("dog");
             });
 
             // When
@@ -43,8 +44,9 @@ public sealed partial class CommandAppTests
             var app = new CommandAppTester();
             app.Configure(config =>
             {
-                config.PropagateExceptions();
-                config.AddCommand<DogCommand>("dog");
+                config
+                    .PropagateExceptions()
+                    .AddCommand<DogCommand>("dog");
             });
 
             // When
@@ -67,8 +69,9 @@ public sealed partial class CommandAppTests
             var app = new CommandAppTester();
             app.Configure(config =>
             {
-                config.PropagateExceptions();
-                config.AddCommand<DogCommand>("dog");
+                config
+                    .PropagateExceptions()
+                    .AddCommand<DogCommand>("dog");
             });
 
             // When
@@ -93,9 +96,10 @@ public sealed partial class CommandAppTests
             var app = new CommandAppTester();
             app.Configure(config =>
             {
-                config.UseStrictParsing();
-                config.PropagateExceptions();
-                config.AddCommand<DogCommand>("dog");
+                config
+                    .UseStrictParsing()
+                    .PropagateExceptions()
+                    .AddCommand<DogCommand>("dog");
             });
 
             // When
@@ -119,9 +123,10 @@ public sealed partial class CommandAppTests
             var app = new CommandAppTester();
             app.Configure(config =>
             {
-                config.UseStrictParsing();
-                config.PropagateExceptions();
-                config.AddCommand<DogCommand>("dog");
+                config
+                    .UseStrictParsing()
+                    .PropagateExceptions()
+                    .AddCommand<DogCommand>("dog");
             });
 
             // When
@@ -145,9 +150,10 @@ public sealed partial class CommandAppTests
             var app = new CommandAppTester();
             app.Configure(config =>
             {
-                config.UseStrictParsing();
-                config.PropagateExceptions();
-                config.AddCommand<DogCommand>("dog");
+                config
+                    .UseStrictParsing()
+                    .PropagateExceptions()
+                    .AddCommand<DogCommand>("dog");
             });
 
             // When
@@ -171,11 +177,12 @@ public sealed partial class CommandAppTests
             var app = new CommandAppTester();
             app.Configure(config =>
             {
-                config.PropagateExceptions();
-                config.AddBranch<AnimalSettings>("animal", animal =>
-                {
-                    animal.AddCommand<DogCommand>("dog");
-                });
+                config
+                    .PropagateExceptions()
+                    .AddBranch<AnimalSettings>("animal", animal =>
+                    {
+                        animal.AddCommand<DogCommand>("dog");
+                    });
             });
 
             // When
@@ -202,11 +209,12 @@ public sealed partial class CommandAppTests
             var app = new CommandAppTester();
             app.Configure(config =>
             {
-                config.PropagateExceptions();
-                config.AddBranch<AnimalSettings>("animal", animal =>
-                {
-                    animal.AddCommand<DogCommand>("dog");
-                });
+                config
+                    .PropagateExceptions()
+                    .AddBranch<AnimalSettings>("animal", animal =>
+                    {
+                        animal.AddCommand<DogCommand>("dog");
+                    });
             });
 
             // When
@@ -234,11 +242,12 @@ public sealed partial class CommandAppTests
             var app = new CommandAppTester();
             app.Configure(config =>
             {
-                config.PropagateExceptions();
-                config.AddBranch<AnimalSettings>("animal", animal =>
-                {
-                    animal.AddCommand<DogCommand>("dog");
-                });
+                config
+                    .PropagateExceptions()
+                    .AddBranch<AnimalSettings>("animal", animal =>
+                    {
+                        animal.AddCommand<DogCommand>("dog");
+                    });
             });
 
             // When
@@ -265,10 +274,11 @@ public sealed partial class CommandAppTests
             var app = new CommandAppTester();
             app.Configure(config =>
             {
+                config
+                    .PropagateExceptions()
+                    .AddCommand<DogCommand>("dog");
                 config.Settings.ConvertFlagsToRemainingArguments = true;
                 config.Settings.StrictParsing = useStrictParsing;
-                config.PropagateExceptions();
-                config.AddCommand<DogCommand>("dog");
             });
 
             // When

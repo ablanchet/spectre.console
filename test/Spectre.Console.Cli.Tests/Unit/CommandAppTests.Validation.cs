@@ -11,12 +11,13 @@ public sealed partial class CommandAppTests
             var app = new CommandApp();
             app.Configure(config =>
             {
-                config.PropagateExceptions();
-                config.AddBranch<AnimalSettings>("animal", animal =>
-                {
-                    animal.AddCommand<DogCommand>("dog");
-                    animal.AddCommand<HorseCommand>("horse");
-                });
+                config
+                    .PropagateExceptions()
+                    .AddBranch<AnimalSettings>("animal", animal =>
+                    {
+                        animal.AddCommand<DogCommand>("dog");
+                        animal.AddCommand<HorseCommand>("horse");
+                    });
             });
 
             // When
@@ -36,12 +37,13 @@ public sealed partial class CommandAppTests
             var app = new CommandApp();
             app.Configure(config =>
             {
-                config.PropagateExceptions();
-                config.AddBranch<AnimalSettings>("animal", animal =>
-                {
-                    animal.AddCommand<DogCommand>("dog");
-                    animal.AddCommand<HorseCommand>("horse");
-                });
+                config
+                    .PropagateExceptions()
+                    .AddBranch<AnimalSettings>("animal", animal =>
+                    {
+                        animal.AddCommand<DogCommand>("dog");
+                        animal.AddCommand<HorseCommand>("horse");
+                    });
             });
 
             // When
@@ -61,11 +63,12 @@ public sealed partial class CommandAppTests
             var app = new CommandApp();
             app.Configure(config =>
             {
-                config.PropagateExceptions();
-                config.AddBranch<AnimalSettings>("animal", animal =>
-                {
-                    animal.AddCommand<TurtleCommand>("turtle");
-                });
+                config
+                    .PropagateExceptions()
+                    .AddBranch<AnimalSettings>("animal", animal =>
+                    {
+                        animal.AddCommand<TurtleCommand>("turtle");
+                    });
             });
 
             // When
@@ -85,12 +88,13 @@ public sealed partial class CommandAppTests
             var app = new CommandApp();
             app.Configure(config =>
             {
-                config.PropagateExceptions();
-                config.AddBranch<AnimalSettings>("animal", animal =>
-                {
-                    animal.AddCommand<DogCommand>("dog");
-                    animal.AddCommand<HorseCommand>("horse");
-                });
+                config
+                    .PropagateExceptions()
+                    .AddBranch<AnimalSettings>("animal", animal =>
+                    {
+                        animal.AddCommand<DogCommand>("dog");
+                        animal.AddCommand<HorseCommand>("horse");
+                    });
             });
 
             // When

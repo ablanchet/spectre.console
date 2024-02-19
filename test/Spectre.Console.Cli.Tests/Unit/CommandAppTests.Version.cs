@@ -41,9 +41,9 @@ public sealed partial class CommandAppTests
             var fixture = new CommandAppTester();
             fixture.Configure(configurator =>
             {
-                configurator.SetApplicationVersion("1.0");
-
-                configurator.AddCommand<EmptyCommand>("empty");
+                configurator
+                    .SetApplicationVersion("1.0")
+                    .AddCommand<EmptyCommand>("empty");
             });
 
             // When
@@ -80,12 +80,12 @@ public sealed partial class CommandAppTests
             var fixture = new CommandAppTester();
             fixture.Configure(configurator =>
             {
-                configurator.SetApplicationVersion("1.0");
-
-                configurator.AddBranch<EmptyCommandSettings>("branch", branch =>
-                {
-                    branch.SetDefaultCommand<EmptyCommand>();
-                });
+                configurator
+                    .SetApplicationVersion("1.0")
+                    .AddBranch<EmptyCommandSettings>("branch", branch =>
+                    {
+                        branch.SetDefaultCommand<EmptyCommand>();
+                    });
             });
 
             // When

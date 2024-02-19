@@ -15,8 +15,9 @@ public sealed partial class CommandAppTests
             var fixture = new CommandAppTester();
             fixture.Configure(configurator =>
             {
-                configurator.SetApplicationName("myapp");
-                configurator.AddCommand<DogCommand>("dog");
+                configurator
+                    .SetApplicationName("myapp")
+                    .AddCommand<DogCommand>("dog");
                 configurator.AddCommand<HorseCommand>("horse");
                 configurator.AddCommand<GiraffeCommand>("giraffe");
             });
@@ -36,8 +37,9 @@ public sealed partial class CommandAppTests
             var fixture = new CommandAppTester();
             fixture.Configure(configurator =>
             {
-                configurator.SetApplicationName("myapp");
-                configurator.AddCommand<DogCommand>("dog");
+                configurator
+                    .SetApplicationName("myapp")
+                    .AddCommand<DogCommand>("dog");
                 configurator.AddCommand<HorseCommand>("horse");
                 configurator.AddCommand<GiraffeCommand>("giraffe")
                     .WithExample("giraffe", "123")
@@ -59,8 +61,9 @@ public sealed partial class CommandAppTests
             var fixture = new CommandAppTester();
             fixture.Configure(configurator =>
             {
-                configurator.SetApplicationName("myapp");
-                configurator.AddCommand<DogCommand>("dog");
+                configurator
+                    .SetApplicationName("myapp")
+                    .AddCommand<DogCommand>("dog");
                 configurator.AddCommand<HorseCommand>("horse");
                 configurator.AddCommand<GiraffeCommand>("giraffe")
                     .WithExample("giraffe", "123")
@@ -83,12 +86,13 @@ public sealed partial class CommandAppTests
             var fixture = new CommandAppTester();
             fixture.Configure(configurator =>
             {
-                configurator.SetApplicationName("myapp");
-                configurator.AddBranch<CatSettings>("cat", animal =>
-                {
-                    animal.SetDescription("Contains settings for a cat.");
-                    animal.AddCommand<LionCommand>("lion");
-                });
+                configurator
+                    .SetApplicationName("myapp")
+                    .AddBranch<CatSettings>("cat", animal =>
+                    {
+                        animal.SetDescription("Contains settings for a cat.");
+                        animal.AddCommand<LionCommand>("lion");
+                    });
             });
 
             // When
@@ -106,12 +110,13 @@ public sealed partial class CommandAppTests
             var fixture = new CommandAppTester();
             fixture.Configure(configurator =>
             {
-                configurator.SetApplicationName("myapp");
-                configurator.AddBranch<CatSettings>("cat", animal =>
-                {
-                    animal.SetDescription("Contains settings for a cat.");
-                    animal.AddCommand<LionCommand>("lion");
-                });
+                configurator
+                    .SetApplicationName("myapp")
+                    .AddBranch<CatSettings>("cat", animal =>
+                    {
+                        animal.SetDescription("Contains settings for a cat.");
+                        animal.AddCommand<LionCommand>("lion");
+                    });
             });
 
             // When
@@ -129,12 +134,13 @@ public sealed partial class CommandAppTests
             var fixture = new CommandAppTester();
             fixture.Configure(configurator =>
             {
-                configurator.SetApplicationName("myapp");
-                configurator.AddBranch<OptionalArgumentWithDefaultValueSettings>("branch", animal =>
-                {
-                    animal.SetDefaultCommand<GreeterCommand>();
-                    animal.AddCommand<GreeterCommand>("greeter");
-                });
+                configurator
+                    .SetApplicationName("myapp")
+                    .AddBranch<OptionalArgumentWithDefaultValueSettings>("branch", animal =>
+                    {
+                        animal.SetDefaultCommand<GreeterCommand>();
+                        animal.AddCommand<GreeterCommand>("greeter");
+                    });
             });
 
             // When
@@ -152,13 +158,14 @@ public sealed partial class CommandAppTests
             var fixture = new CommandAppTester();
             fixture.Configure(configurator =>
             {
-                configurator.SetApplicationName("myapp");
-                configurator.AddBranch<CatSettings>("cat", animal =>
-                {
-                    animal.SetDescription("Contains settings for a cat.");
-                    animal.AddCommand<LionCommand>("lion");
-                });
-                configurator.HideOptionDefaultValues();
+                configurator
+                    .SetApplicationName("myapp")
+                    .HideOptionDefaultValues()
+                    .AddBranch<CatSettings>("cat", animal =>
+                    {
+                        animal.SetDescription("Contains settings for a cat.");
+                        animal.AddCommand<LionCommand>("lion");
+                    });
             });
 
             // When
@@ -176,12 +183,13 @@ public sealed partial class CommandAppTests
             var fixture = new CommandAppTester();
             fixture.Configure(configurator =>
             {
-                configurator.SetApplicationName("myapp");
-                configurator.AddBranch<CatSettings>("cat", animal =>
-                {
-                    animal.SetDescription("Contains settings for a cat.");
-                    animal.AddCommand<LionCommand>("lion");
-                });
+                configurator
+                    .SetApplicationName("myapp")
+                    .AddBranch<CatSettings>("cat", animal =>
+                    {
+                        animal.SetDescription("Contains settings for a cat.");
+                        animal.AddCommand<LionCommand>("lion");
+                    });
             });
 
             // When
@@ -248,10 +256,11 @@ public sealed partial class CommandAppTests
             fixture.SetDefaultCommand<LionCommand>();
             fixture.Configure(configurator =>
             {
-                configurator.AddExample("20", "--alive");
-                configurator.SetApplicationCulture(string.IsNullOrEmpty(culture) ? null : new CultureInfo(culture));
-                configurator.SetApplicationName("myapp");
-                configurator.AddCommand<GiraffeCommand>("giraffe");
+                configurator
+                    .AddExample("20", "--alive")
+                    .SetApplicationCulture(string.IsNullOrEmpty(culture) ? null : new CultureInfo(culture))
+                    .SetApplicationName("myapp")
+                    .AddCommand<GiraffeCommand>("giraffe");
             });
 
             // When
@@ -272,10 +281,11 @@ public sealed partial class CommandAppTests
             fixture.SetDefaultCommand<LionCommand>();
             fixture.Configure(configurator =>
             {
-                configurator.SetApplicationName("myapp");
-                configurator.AddExample("20", "--alive");
-                configurator.AddCommand<GiraffeCommand>("giraffe");
-                configurator.SetHelpProvider(new RenderMarkupHelpProvider(configurator.Settings));
+                configurator
+                    .SetApplicationName("myapp")
+                    .AddExample("20", "--alive")
+                    .SetHelpProvider(new RenderMarkupHelpProvider(configurator.Settings))
+                    .AddCommand<GiraffeCommand>("giraffe");
             });
 
             // When
@@ -321,9 +331,10 @@ public sealed partial class CommandAppTests
             fixture.SetDefaultCommand<LionCommand>();
             fixture.Configure(configurator =>
             {
-                configurator.SetApplicationName("myapp");
-                configurator.AddExample("20", "--alive");
-                configurator.AddCommand<GiraffeCommand>("giraffe");
+                configurator
+                    .SetApplicationName("myapp")
+                    .AddExample("20", "--alive")
+                    .AddCommand<GiraffeCommand>("giraffe");
                 configurator.Settings.HelpProviderStyles = styles;
                 configurator.SetHelpProvider(new RenderMarkupHelpProvider(configurator.Settings));
             });
@@ -344,9 +355,10 @@ public sealed partial class CommandAppTests
             fixture.SetDefaultCommand<LionCommand>();
             fixture.Configure(configurator =>
             {
-                configurator.SetApplicationName("myapp");
-                configurator.AddExample("20", "--alive");
-                configurator.AddCommand<GiraffeCommand>("giraffe");
+                configurator
+                    .SetApplicationName("myapp")
+                    .AddExample("20", "--alive")
+                    .AddCommand<GiraffeCommand>("giraffe");
                 configurator.Settings.HelpProviderStyles = null;
                 configurator.SetHelpProvider(new RenderMarkupHelpProvider(configurator.Settings));
             });
@@ -393,8 +405,9 @@ public sealed partial class CommandAppTests
                 // Register the custom help provider instance
                 registrar.RegisterInstance(typeof(IHelpProvider), helpProvider);
 
-                configurator.SetApplicationName("myapp");
-                configurator.AddCommand<DogCommand>("dog");
+                configurator
+                    .SetApplicationName("myapp")
+                    .AddCommand<DogCommand>("dog");
             });
 
             // When
@@ -417,8 +430,9 @@ public sealed partial class CommandAppTests
                 // Register the custom help provider type
                 registrar.Register(typeof(IHelpProvider), typeof(RedirectHelpProvider));
 
-                configurator.SetApplicationName("myapp");
-                configurator.AddCommand<DogCommand>("dog");
+                configurator
+                    .SetApplicationName("myapp")
+                    .AddCommand<DogCommand>("dog");
             });
 
             // When
@@ -439,10 +453,10 @@ public sealed partial class CommandAppTests
             fixture.Configure(configurator =>
             {
                 // Configure the custom help provider instance
-                configurator.SetHelpProvider(new CustomHelpProvider(configurator.Settings, "1.0"));
-
-                configurator.SetApplicationName("myapp");
-                configurator.AddCommand<DogCommand>("dog");
+                configurator
+                    .SetHelpProvider(new CustomHelpProvider(configurator.Settings, "1.0"))
+                    .SetApplicationName("myapp")
+                    .AddCommand<DogCommand>("dog");
             });
 
             // When
@@ -463,10 +477,10 @@ public sealed partial class CommandAppTests
             fixture.Configure(configurator =>
             {
                 // Configure the custom help provider type
-                configurator.SetHelpProvider<RedirectHelpProvider>();
-
-                configurator.SetApplicationName("myapp");
-                configurator.AddCommand<DogCommand>("dog");
+                configurator
+                    .SetHelpProvider<RedirectHelpProvider>()
+                    .SetApplicationName("myapp")
+                    .AddCommand<DogCommand>("dog");
             });
 
             // When
@@ -484,21 +498,22 @@ public sealed partial class CommandAppTests
             var fixture = new CommandAppTester();
             fixture.Configure(configurator =>
             {
-                configurator.SetApplicationName("myapp");
+                configurator
+                    .SetApplicationName("myapp")
 
-                // All root examples should be shown
-                configurator.AddExample("dog", "--name", "Rufus", "--age", "12", "--good-boy");
-                configurator.AddExample("dog", "--name", "Luna");
-                configurator.AddExample("dog", "--name", "Charlie");
-                configurator.AddExample("dog", "--name", "Bella");
-                configurator.AddExample("dog", "--name", "Daisy");
-                configurator.AddExample("dog", "--name", "Milo");
-                configurator.AddExample("horse", "--name", "Brutus");
-                configurator.AddExample("horse", "--name", "Sugar", "--IsAlive", "false");
-                configurator.AddExample("horse", "--name", "Cash");
-                configurator.AddExample("horse", "--name", "Dakota");
-                configurator.AddExample("horse", "--name", "Cisco");
-                configurator.AddExample("horse", "--name", "Spirit");
+                    // All root examples should be shown
+                    .AddExample("dog", "--name", "Rufus", "--age", "12", "--good-boy")
+                    .AddExample("dog", "--name", "Luna")
+                    .AddExample("dog", "--name", "Charlie")
+                    .AddExample("dog", "--name", "Bella")
+                    .AddExample("dog", "--name", "Daisy")
+                    .AddExample("dog", "--name", "Milo")
+                    .AddExample("horse", "--name", "Brutus")
+                    .AddExample("horse", "--name", "Sugar", "--IsAlive", "false")
+                    .AddExample("horse", "--name", "Cash")
+                    .AddExample("horse", "--name", "Dakota")
+                    .AddExample("horse", "--name", "Cisco")
+                    .AddExample("horse", "--name", "Spirit");
 
                 configurator.AddCommand<DogCommand>("dog");
                 configurator.AddCommand<HorseCommand>("horse");
@@ -668,29 +683,30 @@ public sealed partial class CommandAppTests
             var fixture = new CommandAppTester();
             fixture.Configure(configurator =>
             {
-                configurator.SetApplicationName("myapp");
-                configurator.AddBranch<AnimalSettings>("animal", animal =>
-                {
-                    animal.SetDescription("The animal command.");
+                configurator
+                    .SetApplicationName("myapp")
+                    .AddBranch<AnimalSettings>("animal", animal =>
+                    {
+                        animal.SetDescription("The animal command.");
 
-                    // It should be capped to the first 5 examples by default
+                        // It should be capped to the first 5 examples by default
 
-                    animal.AddCommand<DogCommand>("dog")
-                        .WithExample("animal", "dog", "--name", "Rufus", "--age", "12", "--good-boy")
-                        .WithExample("animal", "dog", "--name", "Luna")
-                        .WithExample("animal", "dog", "--name", "Charlie")
-                        .WithExample("animal", "dog", "--name", "Bella")
-                        .WithExample("animal", "dog", "--name", "Daisy")
-                        .WithExample("animal", "dog", "--name", "Milo");
+                        animal.AddCommand<DogCommand>("dog")
+                            .WithExample("animal", "dog", "--name", "Rufus", "--age", "12", "--good-boy")
+                            .WithExample("animal", "dog", "--name", "Luna")
+                            .WithExample("animal", "dog", "--name", "Charlie")
+                            .WithExample("animal", "dog", "--name", "Bella")
+                            .WithExample("animal", "dog", "--name", "Daisy")
+                            .WithExample("animal", "dog", "--name", "Milo");
 
-                    animal.AddCommand<HorseCommand>("horse")
-                        .WithExample("animal", "horse", "--name", "Brutus")
-                        .WithExample("animal", "horse", "--name", "Sugar", "--IsAlive", "false")
-                        .WithExample("animal", "horse", "--name", "Cash")
-                        .WithExample("animal", "horse", "--name", "Dakota")
-                        .WithExample("animal", "horse", "--name", "Cisco")
-                        .WithExample("animal", "horse", "--name", "Spirit");
-                });
+                        animal.AddCommand<HorseCommand>("horse")
+                            .WithExample("animal", "horse", "--name", "Brutus")
+                            .WithExample("animal", "horse", "--name", "Sugar", "--IsAlive", "false")
+                            .WithExample("animal", "horse", "--name", "Cash")
+                            .WithExample("animal", "horse", "--name", "Dakota")
+                            .WithExample("animal", "horse", "--name", "Cisco")
+                            .WithExample("animal", "horse", "--name", "Spirit");
+                    });
             });
 
             // When
@@ -708,30 +724,31 @@ public sealed partial class CommandAppTests
             var fixture = new CommandAppTester();
             fixture.Configure(configurator =>
             {
-                configurator.SetApplicationName("myapp");
-                configurator.AddBranch<AnimalSettings>("animal", animal =>
-                {
-                    animal.SetDescription("The animal command.");
+                configurator
+                    .SetApplicationName("myapp")
+                    .AddBranch<AnimalSettings>("animal", animal =>
+                    {
+                        animal.SetDescription("The animal command.");
 
-                    // Show the first 8 examples defined on the direct children
-                    configurator.Settings.MaximumIndirectExamples = 8;
+                        // Show the first 8 examples defined on the direct children
+                        configurator.Settings.MaximumIndirectExamples = 8;
 
-                    animal.AddCommand<DogCommand>("dog")
-                        .WithExample("animal", "dog", "--name", "Rufus", "--age", "12", "--good-boy")
-                        .WithExample("animal", "dog", "--name", "Luna")
-                        .WithExample("animal", "dog", "--name", "Charlie")
-                        .WithExample("animal", "dog", "--name", "Bella")
-                        .WithExample("animal", "dog", "--name", "Daisy")
-                        .WithExample("animal", "dog", "--name", "Milo");
+                        animal.AddCommand<DogCommand>("dog")
+                            .WithExample("animal", "dog", "--name", "Rufus", "--age", "12", "--good-boy")
+                            .WithExample("animal", "dog", "--name", "Luna")
+                            .WithExample("animal", "dog", "--name", "Charlie")
+                            .WithExample("animal", "dog", "--name", "Bella")
+                            .WithExample("animal", "dog", "--name", "Daisy")
+                            .WithExample("animal", "dog", "--name", "Milo");
 
-                    animal.AddCommand<HorseCommand>("horse")
-                        .WithExample("animal", "horse", "--name", "Brutus")
-                        .WithExample("animal", "horse", "--name", "Sugar", "--IsAlive", "false")
-                        .WithExample("animal", "horse", "--name", "Cash")
-                        .WithExample("animal", "horse", "--name", "Dakota")
-                        .WithExample("animal", "horse", "--name", "Cisco")
-                        .WithExample("animal", "horse", "--name", "Spirit");
-                });
+                        animal.AddCommand<HorseCommand>("horse")
+                            .WithExample("animal", "horse", "--name", "Brutus")
+                            .WithExample("animal", "horse", "--name", "Sugar", "--IsAlive", "false")
+                            .WithExample("animal", "horse", "--name", "Cash")
+                            .WithExample("animal", "horse", "--name", "Dakota")
+                            .WithExample("animal", "horse", "--name", "Cisco")
+                            .WithExample("animal", "horse", "--name", "Spirit");
+                    });
             });
 
             // When
@@ -749,30 +766,31 @@ public sealed partial class CommandAppTests
             var fixture = new CommandAppTester();
             fixture.Configure(configurator =>
             {
-                configurator.SetApplicationName("myapp");
-                configurator.AddBranch<AnimalSettings>("animal", animal =>
-                {
-                    animal.SetDescription("The animal command.");
+                configurator
+                    .SetApplicationName("myapp")
+                    .AddBranch<AnimalSettings>("animal", animal =>
+                    {
+                        animal.SetDescription("The animal command.");
 
-                    // Show all examples defined on the direct children
-                    configurator.Settings.MaximumIndirectExamples = int.MaxValue;
+                        // Show all examples defined on the direct children
+                        configurator.Settings.MaximumIndirectExamples = int.MaxValue;
 
-                    animal.AddCommand<DogCommand>("dog")
-                        .WithExample("animal", "dog", "--name", "Rufus", "--age", "12", "--good-boy")
-                        .WithExample("animal", "dog", "--name", "Luna")
-                        .WithExample("animal", "dog", "--name", "Charlie")
-                        .WithExample("animal", "dog", "--name", "Bella")
-                        .WithExample("animal", "dog", "--name", "Daisy")
-                        .WithExample("animal", "dog", "--name", "Milo");
+                        animal.AddCommand<DogCommand>("dog")
+                            .WithExample("animal", "dog", "--name", "Rufus", "--age", "12", "--good-boy")
+                            .WithExample("animal", "dog", "--name", "Luna")
+                            .WithExample("animal", "dog", "--name", "Charlie")
+                            .WithExample("animal", "dog", "--name", "Bella")
+                            .WithExample("animal", "dog", "--name", "Daisy")
+                            .WithExample("animal", "dog", "--name", "Milo");
 
-                    animal.AddCommand<HorseCommand>("horse")
-                        .WithExample("animal", "horse", "--name", "Brutus")
-                        .WithExample("animal", "horse", "--name", "Sugar", "--IsAlive", "false")
-                        .WithExample("animal", "horse", "--name", "Cash")
-                        .WithExample("animal", "horse", "--name", "Dakota")
-                        .WithExample("animal", "horse", "--name", "Cisco")
-                        .WithExample("animal", "horse", "--name", "Spirit");
-                });
+                        animal.AddCommand<HorseCommand>("horse")
+                            .WithExample("animal", "horse", "--name", "Brutus")
+                            .WithExample("animal", "horse", "--name", "Sugar", "--IsAlive", "false")
+                            .WithExample("animal", "horse", "--name", "Cash")
+                            .WithExample("animal", "horse", "--name", "Dakota")
+                            .WithExample("animal", "horse", "--name", "Cisco")
+                            .WithExample("animal", "horse", "--name", "Spirit");
+                    });
             });
 
             // When
@@ -790,30 +808,31 @@ public sealed partial class CommandAppTests
             var fixture = new CommandAppTester();
             fixture.Configure(configurator =>
             {
-                configurator.SetApplicationName("myapp");
-                configurator.AddBranch<AnimalSettings>("animal", animal =>
-                {
-                    animal.SetDescription("The animal command.");
+                configurator
+                    .SetApplicationName("myapp")
+                    .AddBranch<AnimalSettings>("animal", animal =>
+                    {
+                        animal.SetDescription("The animal command.");
 
-                    // Do not show examples defined on the direct children
-                    configurator.Settings.MaximumIndirectExamples = 0;
+                        // Do not show examples defined on the direct children
+                        configurator.Settings.MaximumIndirectExamples = 0;
 
-                    animal.AddCommand<DogCommand>("dog")
-                        .WithExample("animal", "dog", "--name", "Rufus", "--age", "12", "--good-boy")
-                        .WithExample("animal", "dog", "--name", "Luna")
-                        .WithExample("animal", "dog", "--name", "Charlie")
-                        .WithExample("animal", "dog", "--name", "Bella")
-                        .WithExample("animal", "dog", "--name", "Daisy")
-                        .WithExample("animal", "dog", "--name", "Milo");
+                        animal.AddCommand<DogCommand>("dog")
+                            .WithExample("animal", "dog", "--name", "Rufus", "--age", "12", "--good-boy")
+                            .WithExample("animal", "dog", "--name", "Luna")
+                            .WithExample("animal", "dog", "--name", "Charlie")
+                            .WithExample("animal", "dog", "--name", "Bella")
+                            .WithExample("animal", "dog", "--name", "Daisy")
+                            .WithExample("animal", "dog", "--name", "Milo");
 
-                    animal.AddCommand<HorseCommand>("horse")
-                        .WithExample("animal", "horse", "--name", "Brutus")
-                        .WithExample("animal", "horse", "--name", "Sugar", "--IsAlive", "false")
-                        .WithExample("animal", "horse", "--name", "Cash")
-                        .WithExample("animal", "horse", "--name", "Dakota")
-                        .WithExample("animal", "horse", "--name", "Cisco")
-                        .WithExample("animal", "horse", "--name", "Spirit");
-                });
+                        animal.AddCommand<HorseCommand>("horse")
+                            .WithExample("animal", "horse", "--name", "Brutus")
+                            .WithExample("animal", "horse", "--name", "Sugar", "--IsAlive", "false")
+                            .WithExample("animal", "horse", "--name", "Cash")
+                            .WithExample("animal", "horse", "--name", "Dakota")
+                            .WithExample("animal", "horse", "--name", "Cisco")
+                            .WithExample("animal", "horse", "--name", "Spirit");
+                    });
             });
 
             // When
@@ -831,30 +850,31 @@ public sealed partial class CommandAppTests
             var fixture = new CommandAppTester();
             fixture.Configure(configurator =>
             {
-                configurator.SetApplicationName("myapp");
-                configurator.AddBranch<AnimalSettings>("animal", animal =>
-                {
-                    animal.SetDescription("The animal command.");
+                configurator
+                    .SetApplicationName("myapp")
+                    .AddBranch<AnimalSettings>("animal", animal =>
+                    {
+                        animal.SetDescription("The animal command.");
 
-                    // All branch examples should be shown
-                    animal.AddExample("animal", "dog", "--name", "Rufus", "--age", "12", "--good-boy");
-                    animal.AddExample("animal", "dog", "--name", "Luna");
-                    animal.AddExample("animal", "dog", "--name", "Charlie");
-                    animal.AddExample("animal", "dog", "--name", "Bella");
-                    animal.AddExample("animal", "dog", "--name", "Daisy");
-                    animal.AddExample("animal", "dog", "--name", "Milo");
-                    animal.AddExample("animal", "horse", "--name", "Brutus");
-                    animal.AddExample("animal", "horse", "--name", "Sugar", "--IsAlive", "false");
-                    animal.AddExample("animal", "horse", "--name", "Cash");
-                    animal.AddExample("animal", "horse", "--name", "Dakota");
-                    animal.AddExample("animal", "horse", "--name", "Cisco");
-                    animal.AddExample("animal", "horse", "--name", "Spirit");
+                        // All branch examples should be shown
+                        animal.AddExample("animal", "dog", "--name", "Rufus", "--age", "12", "--good-boy");
+                        animal.AddExample("animal", "dog", "--name", "Luna");
+                        animal.AddExample("animal", "dog", "--name", "Charlie");
+                        animal.AddExample("animal", "dog", "--name", "Bella");
+                        animal.AddExample("animal", "dog", "--name", "Daisy");
+                        animal.AddExample("animal", "dog", "--name", "Milo");
+                        animal.AddExample("animal", "horse", "--name", "Brutus");
+                        animal.AddExample("animal", "horse", "--name", "Sugar", "--IsAlive", "false");
+                        animal.AddExample("animal", "horse", "--name", "Cash");
+                        animal.AddExample("animal", "horse", "--name", "Dakota");
+                        animal.AddExample("animal", "horse", "--name", "Cisco");
+                        animal.AddExample("animal", "horse", "--name", "Spirit");
 
-                    animal.AddCommand<DogCommand>("dog")
-                        .WithExample("animal", "dog", "--name", "Rufus", "--age", "12", "--good-boy");
-                    animal.AddCommand<HorseCommand>("horse")
-                        .WithExample("animal", "horse", "--name", "Brutus");
-                });
+                        animal.AddCommand<DogCommand>("dog")
+                            .WithExample("animal", "dog", "--name", "Rufus", "--age", "12", "--good-boy");
+                        animal.AddCommand<HorseCommand>("horse")
+                            .WithExample("animal", "horse", "--name", "Brutus");
+                    });
             });
 
             // When
@@ -873,15 +893,16 @@ public sealed partial class CommandAppTests
             fixture.SetDefaultCommand<DogCommand>();
             fixture.Configure(configurator =>
             {
-                configurator.SetApplicationName("myapp");
+                configurator
+                    .SetApplicationName("myapp")
 
-                // All root examples should be shown
-                configurator.AddExample("--name", "Rufus", "--age", "12", "--good-boy");
-                configurator.AddExample("--name", "Luna");
-                configurator.AddExample("--name", "Charlie");
-                configurator.AddExample("--name", "Bella");
-                configurator.AddExample("--name", "Daisy");
-                configurator.AddExample("--name", "Milo");
+                    // All root examples should be shown
+                    .AddExample("--name", "Rufus", "--age", "12", "--good-boy")
+                    .AddExample("--name", "Luna")
+                    .AddExample("--name", "Charlie")
+                    .AddExample("--name", "Bella")
+                    .AddExample("--name", "Daisy")
+                    .AddExample("--name", "Milo");
             });
 
             // When
@@ -899,8 +920,9 @@ public sealed partial class CommandAppTests
             var fixture = new CommandAppTester();
             fixture.Configure(configurator =>
             {
-                configurator.SetApplicationName("myapp");
-                configurator.AddCommand<NoDescriptionCommand>("bar");
+                configurator
+                    .SetApplicationName("myapp")
+                    .AddCommand<NoDescriptionCommand>("bar");
             });
 
             // When

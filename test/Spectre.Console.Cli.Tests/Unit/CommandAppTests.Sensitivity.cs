@@ -9,10 +9,11 @@ public sealed partial class CommandApptests
         var app = new CommandApp();
         app.Configure(config =>
         {
-            config.UseStrictParsing();
-            config.PropagateExceptions();
-            config.CaseSensitivity(CaseSensitivity.Commands);
-            config.AddCommand<GenericCommand<StringOptionSettings>>("command");
+            config
+                .UseStrictParsing()
+                .PropagateExceptions()
+                .CaseSensitivity(CaseSensitivity.Commands)
+                .AddCommand<GenericCommand<StringOptionSettings>>("command");
         });
 
         // When
@@ -36,10 +37,11 @@ public sealed partial class CommandApptests
         var app = new CommandApp();
         app.Configure(config =>
         {
-            config.UseStrictParsing();
-            config.PropagateExceptions();
-            config.CaseSensitivity(CaseSensitivity.LongOptions);
-            config.AddCommand<GenericCommand<StringOptionSettings>>("command");
+            config
+                .UseStrictParsing()
+                .PropagateExceptions()
+                .CaseSensitivity(CaseSensitivity.LongOptions)
+                .AddCommand<GenericCommand<StringOptionSettings>>("command");
         });
 
         // When
@@ -63,9 +65,10 @@ public sealed partial class CommandApptests
         var app = new CommandApp();
         app.Configure(config =>
         {
-            config.UseStrictParsing();
-            config.PropagateExceptions();
-            config.AddCommand<GenericCommand<StringOptionSettings>>("command");
+            config
+                .UseStrictParsing()
+                .PropagateExceptions()
+                .AddCommand<GenericCommand<StringOptionSettings>>("command");
         });
 
         // When
@@ -89,10 +92,11 @@ public sealed partial class CommandApptests
         var app = new CommandAppTester();
         app.Configure(config =>
         {
-            config.UseStrictParsing();
-            config.PropagateExceptions();
-            config.CaseSensitivity(CaseSensitivity.None);
-            config.AddCommand<GenericCommand<StringOptionSettings>>("command");
+            config
+                .UseStrictParsing()
+                .PropagateExceptions()
+                .CaseSensitivity(CaseSensitivity.None)
+                .AddCommand<GenericCommand<StringOptionSettings>>("command");
         });
 
         // When

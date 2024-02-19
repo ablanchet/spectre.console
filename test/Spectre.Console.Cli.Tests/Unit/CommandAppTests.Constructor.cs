@@ -43,8 +43,9 @@ public sealed partial class CommandAppTests
         var fixture = new CommandAppTester();
         fixture.Configure(configurator =>
         {
-            configurator.SetApplicationName("myapp");
-            configurator.AddCommand<NullableCommand>("null");
+            configurator
+                .SetApplicationName("myapp")
+                .AddCommand<NullableCommand>("null");
         });
 
         // When
@@ -65,8 +66,9 @@ public sealed partial class CommandAppTests
         var fixture = new CommandAppTester();
         fixture.Configure(configurator =>
         {
-            configurator.SetApplicationName("myapp");
-            configurator.AddCommand<NullableWithInitCommand>("null");
+            configurator
+                .SetApplicationName("myapp")
+                .AddCommand<NullableWithInitCommand>("null");
         });
 
         // When
@@ -87,8 +89,9 @@ public sealed partial class CommandAppTests
         var fixture = new CommandAppTester();
         fixture.Configure(configurator =>
         {
-            configurator.SetApplicationName("myapp");
-            configurator.AddCommand<NullableCommand>("null");
+            configurator
+                .SetApplicationName("myapp")
+                .AddCommand<NullableCommand>("null");
         });
 
         // When

@@ -318,8 +318,9 @@ public sealed partial class CommandAppTests
                 var app = new CommandAppTester();
                 app.Configure(configurator =>
                 {
-                    configurator.UseStrictParsing();
-                    configurator.AddCommand<DogCommand>("dog");
+                    configurator
+                        .UseStrictParsing()
+                        .AddCommand<DogCommand>("dog");
                 });
 
                 // When
@@ -337,8 +338,9 @@ public sealed partial class CommandAppTests
                 var app = new CommandAppTester();
                 app.Configure(configurator =>
                 {
-                    configurator.UseStrictParsing();
-                    configurator.AddCommand<DogCommand>("dog");
+                    configurator
+                        .UseStrictParsing()
+                        .AddCommand<DogCommand>("dog");
                 });
 
                 // When

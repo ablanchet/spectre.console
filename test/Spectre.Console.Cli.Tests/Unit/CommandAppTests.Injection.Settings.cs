@@ -98,11 +98,12 @@ public sealed partial class CommandAppTests
 
                 app.Configure(config =>
                 {
-                    config.PropagateExceptions();
-                    config.AddBranch<CustomBaseCommandSettings>("foo", b =>
-                    {
-                        b.AddCommand<CustomInheritedCommand>("bar");
-                    });
+                    config
+                        .PropagateExceptions()
+                        .AddBranch<CustomBaseCommandSettings>("foo", b =>
+                        {
+                            b.AddCommand<CustomInheritedCommand>("bar");
+                        });
                 });
 
                 // When

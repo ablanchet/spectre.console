@@ -13,15 +13,16 @@ public sealed partial class CommandAppTests
             var fixture = new CommandAppTester();
             fixture.Configure(config =>
             {
-                config.PropagateExceptions();
-                config.AddBranch<AnimalSettings>("animal", animal =>
-                {
-                    animal.AddBranch<MammalSettings>("mammal", mammal =>
+                config
+                    .PropagateExceptions()
+                    .AddBranch<AnimalSettings>("animal", animal =>
                     {
-                        mammal.AddCommand<DogCommand>("dog");
-                        mammal.AddCommand<HorseCommand>("horse");
+                        animal.AddBranch<MammalSettings>("mammal", mammal =>
+                        {
+                            mammal.AddCommand<DogCommand>("dog");
+                            mammal.AddCommand<HorseCommand>("horse");
+                        });
                     });
-                });
             });
 
             // When

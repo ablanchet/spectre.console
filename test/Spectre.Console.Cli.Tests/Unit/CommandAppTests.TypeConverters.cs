@@ -13,8 +13,9 @@ public sealed partial class CommandAppTests
             var app = new CommandAppTester();
             app.Configure(config =>
             {
-                config.PropagateExceptions();
-                config.AddCommand<CatCommand>("cat");
+                config
+                    .PropagateExceptions()
+                    .AddCommand<CatCommand>("cat");
             });
 
             // When
